@@ -2,6 +2,12 @@
 
 A discussion component to place below the articles (UI, written with React)
 
+## Requirements
+
+- [Git](https://git-scm.com/downloads)
+- [Node.js](https://nodejs.org/en/download/current/)
+- A running instance of [the backend service](https://github.com/ismailarilik/react-discussion-component)
+
 ## Available Scripts
 
 In the project directory, you can run:
