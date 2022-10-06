@@ -1,6 +1,6 @@
 # Getting Started with Create React App
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+A discussion component to place below the articles (UI, written with React)
 
 ## Available Scripts
 
