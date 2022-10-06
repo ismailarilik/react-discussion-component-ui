@@ -1,0 +1,12 @@
+{
+  "recommendations": [
+    "bradlc.vscode-tailwindcss",
+    "christian-kohler.npm-intellisense",
+    "csstools.postcss",
+    "DavidAnson.vscode-markdownlint",
+    "dbaeumer.vscode-eslint",
+    "EditorConfig.EditorConfig",
+    "mgmcdermott.vscode-language-babel",
+    "Orta.vscode-jest"
+  ]
+}
