@@ -8,6 +8,11 @@ A discussion component to place below the articles (UI, written with React)
 - [Node.js](https://nodejs.org/en/download/current/)
 - A running instance of [the backend service](https://github.com/ismailarilik/react-discussion-component)
 
+## Preparing
+
+- Clone the repo from GitHub: `git clone https://github.com/ismailarilik/react-discussion-component-ui.git`
+- Install dependencies using npm: `npm install`
+
 ## Available Scripts
 
 In the project directory, you can run:
