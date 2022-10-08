@@ -2,6 +2,7 @@ import { useState, useEffect, useCallback } from 'react'
 import { DateTime } from 'luxon'
 import { getChildComments, generateAvatar } from './utils'
 import Comment from './models/comment'
+import useWebSocket from './webSocketHook'
 
 function App() {
   const [error, setError] = useState(null)
@@ -15,6 +16,9 @@ function App() {
   // To keep initial random avatars for new comments,
   // for both new (the key will be null) and reply (the key will be commit.id)
   const [avatarsForNewComments, setAvatarsForNewComments] = useState({})
+
+  // Use webSocketHook
+  const ws = useWebSocket({ socketUrl: 'ws://localhost:3000' })
 
   // Fetch comments and display them in screen
   const fetchComments = useCallback(async () => {
@@ -150,8 +154,14 @@ function App() {
   }
 
   useEffect(() => {
-    fetchComments()
-  }, [fetchComments])
+    // If there is an incoming message via websocket,
+    // it means that there is some update and therefore the UI should be updated
+    if (ws.data) {
+      const { message } = ws.data
+      console.log(message)
+      fetchComments()
+    }
+  }, [ws.data, fetchComments])
 
   if (error) {
     return <div>Error: {error.message}</div>
