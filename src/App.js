@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useCallback } from 'react'
 import { DateTime } from 'luxon'
 import { getChildComments, generateAvatar } from './utils'
 import Comment from './models/comment'
@@ -14,7 +14,7 @@ function App() {
   const [inputValues, setInputValues] = useState({})
 
   // Fetch comments and display them in screen
-  const fetchComments = async () => {
+  const fetchComments = useCallback(async () => {
     try {
       const response = await fetch('/comments')
 
@@ -46,7 +46,7 @@ function App() {
       setError(e)
       console.log(e)
     }
-  }
+  }, [])
 
   /*
    * Create a root comment (if comment param is not given) or a nested comment (if comment param is given)
@@ -139,7 +139,7 @@ function App() {
 
   useEffect(() => {
     fetchComments()
-  }, [])
+  }, [fetchComments])
 
   if (error) {
     return <div>Error: {error.message}</div>
