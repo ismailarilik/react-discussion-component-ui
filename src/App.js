@@ -12,6 +12,9 @@ function App() {
   // To keep input values in create comment views,
   // for both new (the key will be null) and reply (the key will be comment.id)
   const [inputValues, setInputValues] = useState({})
+  // To keep initial random avatars for new comments,
+  // for both new (the key will be null) and reply (the key will be commit.id)
+  const [avatarsForNewComments, setAvatarsForNewComments] = useState({})
 
   // Fetch comments and display them in screen
   const fetchComments = useCallback(async () => {
@@ -35,6 +38,13 @@ function App() {
           inputValues[comment.id] = ''
         })
         setInputValues(inputValues)
+
+        // Initialize avatars for new comments
+        const avatars = { null: generateAvatar() }
+        comments.filter(comment => comment.parentCommentId === null).forEach(comment => {
+          avatars[comment.id] = generateAvatar()
+        })
+        setAvatarsForNewComments(avatars)
 
         setIsLoaded(true)
         setComments(comments)
@@ -229,7 +239,7 @@ function App() {
           <h2 className="text-2xl font-bold">Discussion</h2>
           {/* New comment */}
           <div id="new-comment" className="mt-8 flex gap-x-3">
-            <img id="new-commenter-image" src={generateAvatar()} alt="Avatar" className="inline w-8 h-8"/>
+            <img id="new-commenter-image" src={avatarsForNewComments[null]} alt="Avatar" className="inline w-8 h-8"/>
             <input
               type="text"
               id="comment"
@@ -327,7 +337,11 @@ function App() {
                           `new-comment nested mt-8 gap-x-3 ${commentReplyStatuses[comment.id] ? 'flex' : 'hidden'}`
                         }
                       >
-                        <img src={generateAvatar()} alt="Avatar" className="commenter new inline w-8 h-8"/>
+                        <img
+                          src={avatarsForNewComments[comment.id]}
+                          alt="Avatar"
+                          className="commenter new inline w-8 h-8"
+                        />
                         <input
                           type="text"
                           name="comment"
