@@ -67,6 +67,7 @@ function App() {
       // Create a root comment
       const commentInputValue = inputValues[null]
       commentFromClass = new Comment({
+        avatar: avatarsForNewComments[null],
         commentText: commentInputValue
       })
     } else {
@@ -74,6 +75,7 @@ function App() {
       const commentId = comment.id
       const commentInputValue = inputValues[commentId]
       commentFromClass = new Comment({
+        avatar: avatarsForNewComments[commentId],
         commentText: commentInputValue,
         parentCommentId: commentId
       })
