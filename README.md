@@ -2,6 +2,8 @@
 
 A discussion component to place below the articles (UI, written with React)
 
+![Screenshot](https://github.com/ismailarilik/react-discussion-component-ui/blob/main/screenshot.png?raw=true)
+
 ## Requirements
 
 - [Git](https://git-scm.com/downloads)
